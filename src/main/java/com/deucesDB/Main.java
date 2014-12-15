@@ -11,5 +11,5 @@ public class Main {
     @Produces(MediaType.TEXT_PLAIN)
     public String func() {
         return "Hello, world!";
-    }
+    } // Sevidovsky
 }

@@ -1,0 +1,6 @@
+# Created by .gitignore support plugin (hsz.mobi)
+.idea
+DeucesDB.iml
+target
+out
+.gitignore

@@ -13,5 +13,4 @@ public class Main {
     public String func() {
         return "Hello, world!";
     }
-
 }

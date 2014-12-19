@@ -1,6 +1,5 @@
 package com.deucesDB;
 
-import com.facebook.api.FacebookJsonRestClient;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -15,5 +14,4 @@ public class Main {
         return "Hello, world!";
     }
 
-   // FacebookJsonRestClient client = new FacebookJsonRestClient("apiKey", )
 }

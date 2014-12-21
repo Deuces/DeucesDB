@@ -4,3 +4,5 @@ DeucesDB.iml
 target
 out
 .gitignore
+hibernate/lib
+hibernate/hibernate.iml

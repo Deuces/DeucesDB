@@ -13,10 +13,19 @@ import java.util.List;
 class UserDAOImp implements UserDAO {
 
     @Override
-    public void addUser(Users user) throws SQLException {
-
+      public void addUser(Users user) throws SQLException {
+        Session session = null;
+        try {
+            session = HibernateService.getSession();
+            session.beginTransaction();
+            session.save(user);
+            session.getTransaction().commit();
+        } finally {
+            if(session != null && session.isOpen()){
+                session.close();
+            }
+        }
     }
-
     @Override
     public void updateUser(Users user) throws SQLException {
 
@@ -24,11 +33,15 @@ class UserDAOImp implements UserDAO {
 
     @Override
     public Users getUserByID(Integer id) throws SQLException {
-        Session session = HibernateService.getSession();
-        Users user = (Users) session.get(Users.class, id);
-        if(session != null && session.isOpen())
-            session.close();
-        return user;
+        Session session = null;
+        try {
+            session = HibernateService.getSession();
+            Users user = (Users) session.get(Users.class, id);
+            return user;
+        } finally {
+            if(session != null && session.isOpen())
+                session.close();
+        }
     }
 
     @Override

@@ -1,9 +1,12 @@
 package entities;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
- * Created by Vadym on 21.12.2014.
+ * Created by Admin on 03.01.2015.
  */
 @Entity
 public class Post {
@@ -11,11 +14,9 @@ public class Post {
     private String postTittle;
     private String description;
     private String pictureUrl;
-    private Subtopic subtopicBySubparentId;
-    private Users usersByAuthorId;
 
     @Id
-    @Column(name = "POST_ID", nullable = false, insertable = true, updatable = true, precision = 0)
+    @Column(name = "POST_ID")
     public int getPostId() {
         return postId;
     }
@@ -25,7 +26,7 @@ public class Post {
     }
 
     @Basic
-    @Column(name = "POST_TITTLE", nullable = false, insertable = true, updatable = true, length = 50)
+    @Column(name = "POST_TITTLE")
     public String getPostTittle() {
         return postTittle;
     }
@@ -35,7 +36,7 @@ public class Post {
     }
 
     @Basic
-    @Column(name = "DESCRIPTION", nullable = false, insertable = true, updatable = true, length = 50)
+    @Column(name = "DESCRIPTION")
     public String getDescription() {
         return description;
     }
@@ -45,7 +46,7 @@ public class Post {
     }
 
     @Basic
-    @Column(name = "PICTURE_URL", nullable = true, insertable = true, updatable = true, length = 150)
+    @Column(name = "PICTURE_URL")
     public String getPictureUrl() {
         return pictureUrl;
     }
@@ -76,25 +77,5 @@ public class Post {
         result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + (pictureUrl != null ? pictureUrl.hashCode() : 0);
         return result;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "SUBPARENT_ID", referencedColumnName = "SUB_ID", nullable = false)
-    public Subtopic getSubtopicBySubparentId() {
-        return subtopicBySubparentId;
-    }
-
-    public void setSubtopicBySubparentId(Subtopic subtopicBySubparentId) {
-        this.subtopicBySubparentId = subtopicBySubparentId;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "AUTHOR_ID", referencedColumnName = "USER_ID", nullable = false)
-    public Users getUsersByAuthorId() {
-        return usersByAuthorId;
-    }
-
-    public void setUsersByAuthorId(Users usersByAuthorId) {
-        this.usersByAuthorId = usersByAuthorId;
     }
 }

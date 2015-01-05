@@ -1,9 +1,6 @@
 package dao;
 
 
-/**
- * Created by Vadym on 20.12.2014.
- */
 public class FactoryDAO {
     private static FactoryDAO instance = null;
     private static UserDAO userDAO = null;

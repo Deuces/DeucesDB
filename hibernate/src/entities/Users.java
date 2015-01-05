@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
- * Created by Vadym on 21.12.2014.
+ * Created by Admin on 03.01.2015.
  */
 @Entity
 public class Users {
@@ -15,7 +15,7 @@ public class Users {
     private String pass;
 
     @Id
-    @Column(name = "USER_ID", nullable = false, insertable = true, updatable = true, precision = 0)
+    @Column(name = "USER_ID")
     public int getUserId() {
         return userId;
     }
@@ -25,7 +25,7 @@ public class Users {
     }
 
     @Basic
-    @Column(name = "LOGIN", nullable = false, insertable = true, updatable = true, length = 50)
+    @Column(name = "LOGIN")
     public String getLogin() {
         return login;
     }
@@ -35,7 +35,7 @@ public class Users {
     }
 
     @Basic
-    @Column(name = "PASS", nullable = true, insertable = true, updatable = true, length = 50)
+    @Column(name = "PASS")
     public String getPass() {
         return pass;
     }
@@ -65,8 +65,9 @@ public class Users {
         result = 31 * result + (pass != null ? pass.hashCode() : 0);
         return result;
     }
+
     @Override
-    public String toString(){
+    public String toString() {
         return "User id :" + userId + " user login: " + login;
     }
 }

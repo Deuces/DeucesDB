@@ -9,7 +9,6 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import java.sql.SQLException;
 
 @Path("/user")
 public class Main {
@@ -22,7 +21,7 @@ public class Main {
             Users user = userDAO.getUserByID(id);
             return user.toString();
         } catch (Exception e) {
-            return "No such user!";
+           return "No such user!";
         }
     }
 }

@@ -1,20 +1,19 @@
 package entities;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
- * Created by Admin on 03.01.2015.
+ * Created by Vadym on 05.01.2015.
  */
 @Entity
 public class Subtopic {
     private int subId;
     private String subtopicName;
+    private Topic topicByParentId;
+    private Users usersByAuthorId;
 
     @Id
-    @Column(name = "SUB_ID")
+    @Column(name = "SUB_ID", nullable = false, insertable = true, updatable = true, precision = 0)
     public int getSubId() {
         return subId;
     }
@@ -24,7 +23,7 @@ public class Subtopic {
     }
 
     @Basic
-    @Column(name = "SUBTOPIC_NAME")
+    @Column(name = "SUBTOPIC_NAME", nullable = false, insertable = true, updatable = true, length = 50)
     public String getSubtopicName() {
         return subtopicName;
     }
@@ -52,5 +51,25 @@ public class Subtopic {
         int result = subId;
         result = 31 * result + (subtopicName != null ? subtopicName.hashCode() : 0);
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "PARENT_ID", referencedColumnName = "TOPIC_ID", nullable = false)
+    public Topic getTopicByParentId() {
+        return topicByParentId;
+    }
+
+    public void setTopicByParentId(Topic topicByParentId) {
+        this.topicByParentId = topicByParentId;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "AUTHOR_ID", referencedColumnName = "USER_ID", nullable = false)
+    public Users getUsersByAuthorId() {
+        return usersByAuthorId;
+    }
+
+    public void setUsersByAuthorId(Users usersByAuthorId) {
+        this.usersByAuthorId = usersByAuthorId;
     }
 }

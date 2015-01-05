@@ -4,7 +4,7 @@
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
-          <unit-entry name="hibernate.cfg.xml" value="b58e4fa2-49b4-4c1c-ac3b-7da8206f0d2c" />
+          <unit-entry name="hibernate.cfg.xml" value="e596d5fd-9b1d-438b-9e63-57c2ce90962f" />
         </datasource-map>
         <naming-strategy-map />
         <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/hibernate.cfg.xml" />
@@ -19,7 +19,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Hibernate 4.2.2-4.2.2" level="project" />
-    <orderEntry type="library" name="ojdbc6" level="project" />
     <orderEntry type="library" name="ojdbc7" level="project" />
   </component>
 </module>

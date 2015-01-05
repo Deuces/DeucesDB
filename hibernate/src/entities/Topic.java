@@ -1,20 +1,18 @@
 package entities;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
- * Created by Admin on 03.01.2015.
+ * Created by Vadym on 05.01.2015.
  */
 @Entity
 public class Topic {
     private int topicId;
     private String topicName;
+    private Users usersByAuthorId;
 
     @Id
-    @Column(name = "TOPIC_ID")
+    @Column(name = "TOPIC_ID", nullable = false, insertable = true, updatable = true, precision = 0)
     public int getTopicId() {
         return topicId;
     }
@@ -24,7 +22,7 @@ public class Topic {
     }
 
     @Basic
-    @Column(name = "TOPIC_NAME")
+    @Column(name = "TOPIC_NAME", nullable = false, insertable = true, updatable = true, length = 50)
     public String getTopicName() {
         return topicName;
     }
@@ -51,5 +49,15 @@ public class Topic {
         int result = topicId;
         result = 31 * result + (topicName != null ? topicName.hashCode() : 0);
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "AUTHOR_ID", referencedColumnName = "USER_ID", nullable = false)
+    public Users getUsersByAuthorId() {
+        return usersByAuthorId;
+    }
+
+    public void setUsersByAuthorId(Users usersByAuthorId) {
+        this.usersByAuthorId = usersByAuthorId;
     }
 }
